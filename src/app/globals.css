@@ -1,8 +1,12 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #111111;
+  --foreground: #111111;
 }
 
 @theme inline {
@@ -10,6 +14,29 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@layer utilities {
+  .bg-fancy-grid {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 2px, transparent 2px);
+    background-size: 80px 80px;
+    background-position: 0 0;
+  }
+
+  @keyframes grid {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100px 100px;
+    }
+  }
+
+  .animate-grid {
+    animation: grid 30s linear infinite;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +49,22 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+}
+
+/* Typography Styling */
+h1 {
+  @apply text-3xl font-bold tracking-tight mb-2;
+}
+
+h2 {
+  @apply text-2xl font-semibold tracking-tight mb-2;
+}
+
+h3 {
+  @apply text-xl font-semibold mb-2;
+}
+
+p {
+  @apply text-base leading-relaxed text-neutral-300;
 }
