@@ -43,7 +43,7 @@ export default function ColorSelectorCard() {
         <p className="text-lg font-semibold mb-4">Select a theme:</p>
         <div className="flex gap-3">
           {COLORS.map((clr) => {
-            const { border, ring, bg } = colorMap[clr];
+            const { border, ring, bg } = colorMap[clr as keyof typeof colorMap];
 
             return (
               <button
