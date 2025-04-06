@@ -1,8 +1,11 @@
 import Card from "../components/Card";
 import socials from "../data/Socials";
 import Link from "next/link";
+import { useTheme } from "../context/ThemeContext";
 
 export default function WorkTogetherCard() {
+  const { color } = useTheme();
+
   return (
     <Card>
       <div className="space-y-5 text-xs sm:text-sm md:text-[13px] text-neutral-300 leading-relaxed font-mono">
@@ -24,7 +27,7 @@ export default function WorkTogetherCard() {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-md border border-neutral-700 hover:border-current hover:text-white transition-all text-neutral-400 text-xs"
+                className={`px-3 py-1.5 rounded-md border border-neutral-700 hover:border-${color}-500 hover:text-${color}-500 transition-all text-neutral-400 text-xs`}
               >
                 {name}
               </Link>
